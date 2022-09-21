@@ -81,6 +81,11 @@
                 'id' => 'domain',
                 'schema' => 'urn:ietf:params:xml:ns:auxcontact-0.1 auxcontact-1.0.xsd',
             ),
+            'secDNS' => array(
+                'xmlns' => 'urn:ietf:params:xml:ns:secDNS-1.1',
+                'id' => 'domain',
+                'schema' => 'urn:ietf:params:xml:ns:secDNS-1.1 secDNS-1.1.xsd',
+            ),
         );
 
         public static function id($object)
