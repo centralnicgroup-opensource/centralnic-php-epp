@@ -4,10 +4,16 @@ image: git.centralnic.com:5050/centralnic/syntaxchecker:master
 
 stages:
   - syntax-check
+  - php-lint
   - git-robot
 
+include:
+  - project: centralnic/tests
+    file:
+      - gitlab-ci-phplint.yml
+
 default:
-  before_script: 
+  before_script:
    - git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@git.centralnic.com/centralnic/tests.git
    - tests/prep-alpine-env.sh
 
@@ -17,7 +23,7 @@ step-syntax-check:
     - export DYNAMIC_ENV_VAR=DEVELOP
     - echo running tests in $DYNAMIC_ENV_VAR
     - tests/testlints.sh
-  
+
 merge-master-to-ote:
   stage: git-robot
   only:
