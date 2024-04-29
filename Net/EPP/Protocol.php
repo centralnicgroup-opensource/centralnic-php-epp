@@ -106,7 +106,7 @@ class Net_EPP_Protocol
             $time_end = microtime(true);
             $timeDiff = round(($time_end - $time_start) * 1000);
             if ($GLOBALS['debug']) {
-                syslog(LOG_DEBUG, "time to write to socket ${timeDiff}ms");
+                syslog(LOG_DEBUG, "time to write to socket {$timeDiff}ms");
             }
             if (($time_end - $time_start) > 10000000) {
                 throw new exception('Timeout while writing to EPP Server');
@@ -158,7 +158,7 @@ class Net_EPP_Protocol
     {
         $length = strlen($xml) + 4;
         if ($GLOBALS['debug']) {
-            syslog(LOG_INFO, "length of the header is ${length} about to write ${xml}");
+            syslog(LOG_INFO, "length of the header is {$length} about to write {$xml}");
         }
         // Grab XML length & add on 4 bytes for the counter
         $res = Net_EPP_Protocol::_fwrite_nb($socket, pack('N', $length) . $xml, $length);
